@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:meditation_app/screens/welcome_screen/welcome_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -9,6 +10,8 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  bool _agree = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +33,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ],
           ),
           const Padding(
-            padding: EdgeInsets.only(top: 60, bottom: 40),
+            padding: EdgeInsets.only(top: 50, bottom: 30),
             child: Text(
               'OR LOG IN WITH EMAIL',
               style: TextStyle(
@@ -43,16 +46,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
           _userEmail(context),
           _userPassword(context),
           Padding(
-            padding: const EdgeInsets.only(left: 30, top: 20),
+            padding: const EdgeInsets.only(left: 30, top: 5),
             child: Row(
-              children: const [
-                Text('I have read the '),
-                Text('Private Policy',style: TextStyle(
-
-                ),)
+              children: [
+                const Text('I have read the '),
+                const Text(
+                  'Private Policy',
+                  style: TextStyle(color: Color(0xFF8E97FD)),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 130),
+                  child: Checkbox(
+                      value: _agree,
+                      onChanged: (value) {
+                        setState(() {
+                          _agree = value ?? false;
+                        });
+                      }),
+                )
               ],
             ),
-          )
+          ),
+          _getStartedButton(context),
         ],
       ),
     );
@@ -146,6 +161,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           fillColor: const Color(0xFFF2F3F7),
           hintText: 'Name',
           hintStyle: const TextStyle(color: Color(0xFFA1A4B2)),
+          suffixIcon: const Icon(Icons.check_sharp),
           enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.transparent),
               borderRadius: BorderRadius.circular(20)),
@@ -163,6 +179,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           fillColor: const Color(0xFFF2F3F7),
           hintText: 'Email address',
           hintStyle: const TextStyle(color: Color(0xFFA1A4B2)),
+          suffixIcon: const Icon(Icons.check_sharp),
           enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.transparent),
               borderRadius: BorderRadius.circular(20)),
@@ -186,5 +203,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
+  }
+
+  Widget _getStartedButton(BuildContext context) {
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (_) => const WelcomeScreen()));
+      } ,
+      child: Container(
+        height: 60,
+        width: 350,
+        margin: const EdgeInsets.only(top: 5),
+        decoration: BoxDecoration(
+          color: const Color(0xFF8E97FD),
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: const Center(
+            child: Text(
+          'GET STARTED',
+          style: TextStyle(color: Colors.white),
+        )),
+      ),
+    );
+  }
+
+  void _getStartedFunc(){
+
   }
 }
