@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meditation_app/screens/main_screen.dart';
+import 'package:meditation_app/screens/sub_screens/reminder_screen.dart';
 
 void main() {
   runApp(const MyApp());

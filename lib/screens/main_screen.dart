@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:meditation_app/screens/sign_up_and_sign_in/sign_in.dart';
+import 'package:meditation_app/screens/sub_screens/sign_in.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -30,7 +30,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget _buildHeader(BuildContext context) {
     return Stack(alignment: AlignmentDirectional.center, children: [
       SizedBox(
-        height: 450,
+        height: 360,
         width: MediaQuery
             .of(context)
             .size

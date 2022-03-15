@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:meditation_app/screens/sign_up_and_sign_in/sign_up.dart';
+import 'package:meditation_app/screens/sub_screens/sign_up.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -13,39 +13,41 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Stack(
-            clipBehavior: Clip.none,
-            alignment: AlignmentDirectional.center,
-            children: [
-              SvgPicture.asset('assets/images/Auth_bgr.svg'),
-              _backButton(context),
-              const Text(
-                'Welcome Back!',
-                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 28),
-              ),
-              _fbLoginButton(context),
-              _ggLoginButton(context),
-            ],
-          ),
-          const Padding(
-            padding: EdgeInsets.only(top: 60, bottom: 40),
-            child: Text(
-              'OR LOG IN WITH EMAIL',
-              style: TextStyle(
-                  color: Color(0xFFA1A4B2),
-                  fontWeight: FontWeight.w700,
-                  fontSize: 15),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Stack(
+              clipBehavior: Clip.none,
+              alignment: AlignmentDirectional.center,
+              children: [
+                SvgPicture.asset('assets/images/Auth_bgr.svg'),
+                _backButton(context),
+                const Text(
+                  'Welcome Back!',
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 28),
+                ),
+                _fbLoginButton(context),
+                _ggLoginButton(context),
+              ],
             ),
-          ),
-          _emailLogin(context),
-          _passwordLogin(context),
-          _loginButton(context),
-          _forgotPassword(context),
-          _moveToSignUp(context),
-        ],
+            const Padding(
+              padding: EdgeInsets.only(top: 60, bottom: 40),
+              child: Text(
+                'OR LOG IN WITH EMAIL',
+                style: TextStyle(
+                    color: Color(0xFFA1A4B2),
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15),
+              ),
+            ),
+            _emailLogin(context),
+            _passwordLogin(context),
+            _loginButton(context),
+            _forgotPassword(context),
+            _moveToSignUp(context),
+          ],
+        ),
       ),
     );
   }
@@ -118,6 +120,10 @@ class _SignInScreenState extends State<SignInScreen> {
           enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.transparent),
               borderRadius: BorderRadius.circular(20)),
+          focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.transparent),
+              borderRadius: BorderRadius.circular(20)
+          )
         ),
       ),
     );
@@ -135,6 +141,10 @@ class _SignInScreenState extends State<SignInScreen> {
           enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.transparent),
               borderRadius: BorderRadius.circular(20)),
+          focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.transparent),
+              borderRadius: BorderRadius.circular(20)
+          )
         ),
       ),
     );
@@ -174,7 +184,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
   Widget _moveToSignUp(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 30),
+      padding: const EdgeInsets.only(top: 20, bottom: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -195,7 +205,7 @@ class _SignInScreenState extends State<SignInScreen> {
     return Align(
       alignment: AlignmentDirectional.topStart,
       child: Padding(
-        padding: const EdgeInsets.only(left: 20, bottom: 120),
+        padding: const EdgeInsets.only(left: 20, bottom: 180),
         child: Container(
           height: 50,
           width: 50,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:meditation_app/screens/welcome_screen/welcome_screen.dart';
+import 'package:meditation_app/screens/sub_screens/welcome_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -15,60 +15,62 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Stack(
-            clipBehavior: Clip.none,
-            alignment: AlignmentDirectional.center,
-            children: [
-              SvgPicture.asset('assets/images/Auth_bgr.svg'),
-              _backButton(context),
-              const Text(
-                'Welcome Back!',
-                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 28),
-              ),
-              _fbLoginButton(context),
-              _ggLoginButton(context),
-            ],
-          ),
-          const Padding(
-            padding: EdgeInsets.only(top: 50, bottom: 30),
-            child: Text(
-              'OR LOG IN WITH EMAIL',
-              style: TextStyle(
-                  color: Color(0xFFA1A4B2),
-                  fontWeight: FontWeight.w700,
-                  fontSize: 15),
-            ),
-          ),
-          _userName(context),
-          _userEmail(context),
-          _userPassword(context),
-          Padding(
-            padding: const EdgeInsets.only(left: 30, top: 5),
-            child: Row(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Stack(
+              clipBehavior: Clip.none,
+              alignment: AlignmentDirectional.center,
               children: [
-                const Text('I have read the '),
+                SvgPicture.asset('assets/images/Auth_bgr.svg'),
+                _backButton(context),
                 const Text(
-                  'Private Policy',
-                  style: TextStyle(color: Color(0xFF8E97FD)),
+                  'Create Your Account',
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 28),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 130),
-                  child: Checkbox(
-                      value: _agree,
-                      onChanged: (value) {
-                        setState(() {
-                          _agree = value ?? false;
-                        });
-                      }),
-                )
+                _fbRegisterButton(context),
+                _ggRegisterButton(context),
               ],
             ),
-          ),
-          _getStartedButton(context),
-        ],
+            const Padding(
+              padding: EdgeInsets.only(top: 50, bottom: 30),
+              child: Text(
+                'OR LOG IN WITH EMAIL',
+                style: TextStyle(
+                    color: Color(0xFFA1A4B2),
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15),
+              ),
+            ),
+            _userName(context),
+            _userEmail(context),
+            _userPassword(context),
+            Padding(
+              padding: const EdgeInsets.only(left: 30, top: 5),
+              child: Row(
+                children: [
+                  const Text('I have read the '),
+                  const Text(
+                    'Private Policy',
+                    style: TextStyle(color: Color(0xFF8E97FD)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 130),
+                    child: Checkbox(
+                        value: _agree,
+                        onChanged: (value) {
+                          setState(() {
+                            _agree = value ?? false;
+                          });
+                        }),
+                  )
+                ],
+              ),
+            ),
+            _getStartedButton(context),
+          ],
+        ),
       ),
     );
   }
@@ -96,7 +98,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _fbLoginButton(BuildContext context) {
+  Widget _fbRegisterButton(BuildContext context) {
     return Container(
       height: 60,
       width: 350,
@@ -122,7 +124,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _ggLoginButton(BuildContext context) {
+  Widget _ggRegisterButton(BuildContext context) {
     return Positioned(
       bottom: -20,
       child: Container(
@@ -213,7 +215,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: Container(
         height: 60,
         width: 350,
-        margin: const EdgeInsets.only(top: 5),
+        margin: const EdgeInsets.only(top: 5, bottom: 20),
         decoration: BoxDecoration(
           color: const Color(0xFF8E97FD),
           borderRadius: BorderRadius.circular(30),
